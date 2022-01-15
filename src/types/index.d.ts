@@ -1,3 +1,5 @@
+import { SxProps, Theme } from "@mui/material";
+
 declare module 'mui-color' {
 
   enum ColorFormat {
@@ -87,6 +89,10 @@ declare module 'mui-color' {
     A tooltip could be added to the button to display the color name or value
    */
     tooltip?: string;
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx?: SxProps<Theme>;
   }
 
   function ColorButton(props: ColorButtonProps): JSX.Element;

@@ -10,9 +10,10 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Popover from '@mui/material/Popover';
-import { StylesProvider, createGenerateClassName, makeStyles } from '@mui/styles';
+import { StylesProvider, createGenerateClassName } from '@mui/styles';
 
 import ColorButton from './ColorButton';
 import ColorBox from './ColorBox';
@@ -20,17 +21,6 @@ import * as ColorTool from '../helpers/colorTool';
 import uncontrolled from '../helpers/uncontrolled';
 import * as CommonTypes from '../helpers/commonTypes';
 import useTranslate from '../helpers/useTranslate';
-
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'row',
-    width: 'max-content',
-  },
-  colorpickerButton: {
-    margin: 6,
-  },
-});
 
 const generateClassName = createGenerateClassName({
   seed: 'ColorPicker',
@@ -65,7 +55,6 @@ const ColorPicker = ({
   hideTextfield,
   disablePlainColor,
 }) => {
-  const classes = useStyles();
   const refPicker = useRef(null);
   const [open, setOpen] = useState(false);
   const { t, i18n } = useTranslate();
@@ -148,16 +137,17 @@ const ColorPicker = ({
 
   return (
     <StylesProvider generateClassName={generateClassName}>
-      <div ref={refPicker} className={classes.root}>
+      <Box component="div" ref={refPicker} sx={{ display: 'flex', flexDirection: 'row', width: 'max-content' }}>
         <ColorButton
           data-testid="colorpicker-button"
-          className={`muicc-colorpicker-button ${classes.colorpickerButton}`}
+          className="muicc-colorpicker-button"
           color={color}
           onClick={handleClick}
+          sx={{ margin: 6 }}
         />
         {textField}
         {box}
-      </div>
+      </Box>
     </StylesProvider>
   );
 };

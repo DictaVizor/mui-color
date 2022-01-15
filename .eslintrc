@@ -3,7 +3,7 @@
     "plugin:react/recommended",
     "airbnb",
     "plugin:import/errors",
-    "prettier",
+    "prettier"
   ],
   "parserOptions": {
     "ecmaVersion": 11,
